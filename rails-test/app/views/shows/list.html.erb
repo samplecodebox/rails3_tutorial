@@ -1,0 +1,17 @@
+
+<h2> List of requested shows </h2>
+
+Language: <%= @language %>
+
+
+  <ul id="show_list">
+    <% @shows.each do |show| %>
+      <li> <%= show.name%> </li>
+    <% end %>
+  </ul>
+
+
+<%= link_to 'List all', list_shows_path %> | 
+<%= link_to 'List only English', list_shows_path(:language=>"english") %> |
+<%= link_to 'List only French', list_shows_path(:language=>"french") %> |
+<%= link_to 'Home', shows_path %>

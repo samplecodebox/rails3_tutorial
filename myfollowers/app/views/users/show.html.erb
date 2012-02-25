@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+
+<h2> List of Users </h2>
+<% @users.each do |user| %>
+    <%= user.name %>
+    <% if !(@user.followee?(user)) %>
+
+        <%= link_to 'Follow', user_followings_path(@user,:followee_id => user), :method =>:post  %> <% if @user.not_followee?(user) %>
+    <% end %>
+<br/>
+<% end %>
+
+<br/>
+
+
+<h2> My following List </h2>
+
+<% @user.followings.each do |following| %>
+    <%= following.followee.name %>
+    <%= link_to 'Unfollow', user_following_path(@user, following), :method => :delete, :confirm => "Are you sure you want to delete this following? " %>
+<br/>
+<% end %>
+
+<br/>
+
+<h2> Your Following list </h2>
+
+<% @user.followers.each do |follower| %>
+    <%= follower.name %>
+<br/>
+
+<% end %>
+<br/>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Destroy', @user, confirm: 'Are you sure?', method: :delete %> |
+<%= link_to 'Back', users_path %>

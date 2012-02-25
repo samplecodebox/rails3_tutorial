@@ -1,0 +1,11 @@
+<h2> <%= @show.name%>-Season<%= @season.number%>   </h2>
+
+<b> List of Episodes </b>
+<ul>
+  <% @season.episodes.each do |episode| %>
+  <li> <%= link_to "Episode#{episode.number}", season_episode_path(@season, episode) %> </li>
+  <% end %>
+</ul>
+<%= link_to 'New Episode', new_season_episode_path(@season) %> |
+<%= link_to 'Back', show_path(@show)  %> |
+<%= link_to 'Home', shows_path %>

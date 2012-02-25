@@ -1,0 +1,17 @@
+source 'http://rubygems.org'
+
+gem 'rails', '3.0.8'
+
+gem 'sqlite3'
+
+group :test, :development do
+  gem 'webrat'
+  gem 'ruby-debug'
+  gem "rspec-rails", "~> 2.4"
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl'
+end

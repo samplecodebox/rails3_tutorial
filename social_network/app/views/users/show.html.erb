@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Welcome <b><%= @user.name %> </b>
+</p>
+
+<h2> Make Friends </h2>
+<ul>
+    <% User.all.each do |user| %>
+        <li> <%= user.name %>  <%= link_to "Add", user_friendships_path(@user, :friend_id => user), :method => :post %>  </li>
+    <% end %>
+</ul>
+
+<h2> Friends Circle </h2>
+<ul>
+  <% @user.friendships.each do |friendship| %>
+  <li> <%= friendship.friend.name %>  <%= link_to "Remove", user_friendship_path(@user, friendship), :method => :delete %> </li>
+  <% end  %>
+</ul>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Destroy', @user, confirm: 'Are you sure?', method: :delete %> |
+<%= link_to 'Back', users_path %>

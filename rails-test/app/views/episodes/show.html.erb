@@ -1,0 +1,10 @@
+<h2> <%=@show.name%>-Season<%= @season.number %>-Episode<%= @episode.number%>  </h2>
+
+<p>
+  Name: <%= @episode.name %><br/>
+  Description: <%= @episode.description %><br/>
+  Language: <%= @episode.language %>
+</p>
+
+<%= link_to 'Back', show_season_path(@show, @season) %> |
+<%= link_to 'Home', shows_path %>
